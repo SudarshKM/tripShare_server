@@ -17,6 +17,9 @@ router.post('/host',tripController.hostTrip)
 
 router.get('/host',tripController.getAllTrip)
 
+router.get('/hostnosearch',tripController.getAllnosearchTrip)
+
+
 router.delete('/host',tripController.deleteTrip)
 
 router.get('/searchtrip',tripController.searchTripController)

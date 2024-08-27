@@ -55,6 +55,26 @@ exports.getAllTrip = async (req, res) => {
   }
 };
 
+//get all trip
+exports.getAllnosearchTrip = async (req, res) => {
+  const searchKey = req.query.search;
+
+  try {
+    const query = {
+      destination: { $regex: searchKey, $options: "i" },
+    };
+    const allTrips = await trips.find();
+
+    if (allTrips) {
+      res.status(200).json(allTrips);
+    } else {
+      res.status(406).json("No trip Available");
+    }
+  } catch (error) {
+    res.status(401).json(error);
+  }
+};
+
 // delete trip
 
 exports.deleteTrip = async (req, res) => {
